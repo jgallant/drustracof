@@ -10,11 +10,11 @@
 <body>
 
 <?php
-require_once(dirname(__FILE__) . '/Config.php');
-require_once(dirname(__FILE__) . '/StraCof.php');
-
 // I'm going to store the access token for the user in a session variable.
 session_start();
+
+require_once(dirname(__FILE__) . '/Config.php');
+require_once(dirname(__FILE__) . '/StraCof.php');
 
 $stracof = new StraCof($client_id, $client_secret, $client_access_token);
 
@@ -43,6 +43,10 @@ foreach ($activities as $activity) {
 echo "<select id='activities'>$activity_options</select>";
 ?>
 
+<div id="map"></div>
+
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=geometry"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script src="js/stracof.js"></script>
 </body>
 </html>

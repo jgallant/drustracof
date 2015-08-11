@@ -10,12 +10,12 @@ if (empty($activity_id)) {
   echo json_encode($response);
   die;
 }
+// I'm going to store the access token for the user in a session variable.
+session_start();
 
 require_once(dirname(__FILE__) . '/Config.php');
 require_once(dirname(__FILE__) . '/StraCof.php');
 
-// I'm going to store the access token for the user in a session variable.
-session_start();
 
 $stracof = new StraCof($client_id, $client_secret, $client_access_token);
 
@@ -27,4 +27,4 @@ if (empty($stracof->access_token)) {
   die;
 }
 
-var_dump($stracof->get_activity($activity_id));
+echo json_encode($stracof->get_activity($activity_id));
