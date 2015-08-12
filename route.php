@@ -13,13 +13,12 @@ if (empty($activity_id)) {
 // I'm going to store the access token for the user in a session variable.
 session_start();
 
-require_once(dirname(__FILE__) . '/Config.php');
+require_once(dirname(__FILE__) . '/config.php');
 require_once(dirname(__FILE__) . '/StraCof.php');
 
+$stracof = new StraCof($stracof_config);
 
-$stracof = new StraCof($client_id, $client_secret, $client_access_token);
-
-if (empty($stracof->access_token)) {
+if (!$stracof->is_loaded()) {
   $response->error = true;
   $response->message = "There was an error accessing Strava. Please login again.";
 
