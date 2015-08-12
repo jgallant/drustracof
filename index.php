@@ -12,8 +12,7 @@
 <?php
 // I'm going to store the access token for the user in a session variable.
 session_start();
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
+
 require_once(dirname(__FILE__) . '/config.php');
 require_once(dirname(__FILE__) . '/StraCof.php');
 
@@ -45,7 +44,9 @@ echo "<select id='activities'>$activity_options</select>";
 ?>
 
 <div id="map"></div>
-<?php var_dump($stracof->get_coffee_shops(37.788022,-122.399797)); ?>
+<div class="total_container"></div>
+<div class="points_container"></div>
+
 <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=geometry"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script src="js/stracof.js"></script>
